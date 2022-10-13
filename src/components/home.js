@@ -15,20 +15,23 @@ function Home() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  //https://arcane-brushlands-23016.herokuapp.com/interview
+
   const fetchAndSetData = () => {
-    axios.get("https://arcane-brushlands-23016.herokuapp.com:56306/interview").then(({ data }) => {
+    axios.get("https://arcane-brushlands-23016.herokuapp.com/interview").then(({ data }) => {
       setData(data);
     });
   }
 
+  
   const fetchAndSetUserList = () => {
-    axios.get("https://arcane-brushlands-23016.herokuapp.com:56306/users").then(({ data }) => {
+    axios.get("https://arcane-brushlands-23016.herokuapp.com/users").then(({ data }) => {
       setUserList(data);
     })
   }
 
   const deleteInterview = (id) => {
-    axios.delete("https://arcane-brushlands-23016.herokuapp.com:56306/interview", {
+    axios.delete("https://arcane-brushlands-23016.herokuapp.com/interview", {
       data: {
         id
       }
@@ -51,12 +54,12 @@ function Home() {
   const submitInterview = (event) => {
     // check if interview is being updated
     if (interview.fl) {
-      axios.put("https://arcane-brushlands-23016.herokuapp.com:56306/interview", {...interview}).then(() => {
+      axios.put("https://arcane-brushlands-23016.herokuapp.com/interview", {...interview}).then(() => {
         fetchAndSetData();
       })
     } else {
       // Create new interview
-      axios.post("https://arcane-brushlands-23016.herokuapp.com:56306/interview", {...interview}).then(() => {
+      axios.post("https://arcane-brushlands-23016.herokuapp.com/interview", {...interview}).then(() => {
         fetchAndSetData();
       });
     }
